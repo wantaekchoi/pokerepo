@@ -1,0 +1,23 @@
+# 포켓몬 데이터를 다시 받아온다. 새 세대가 나오면 여기서 자동으로 들어온다.
+name: refresh data
+on:
+  schedule: [{ cron: "0 0 1 * *" }]
+  workflow_dispatch:
+permissions: { contents: write }
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "20" }
+      - run: node scripts/build-data.mjs
+      - name: 바뀌었으면 커밋하고 major 태그를 옮긴다
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/species.json
+          git diff --staged --quiet && { echo "변경 없음"; exit 0; }
+          git commit -m "chore: 포켓몬 데이터 갱신"
+          git push
+          git tag -f v1 && git push -f origin v1

@@ -1,0 +1,390 @@
+{
+  "login": "wantaekchoi",
+  "repos": {
+    "besu-eth/besu": {
+      "exp": 0,
+      "caught": false,
+      "species": 453,
+      "stars": 1826,
+      "alive": true
+    },
+    "wantaekchoi/detect": {
+      "exp": 2800,
+      "caught": true,
+      "species": 736,
+      "stars": 0,
+      "alive": true
+    },
+    "OmniOneID/did-client-sdk-aos-kotlin": {
+      "exp": 400,
+      "caught": true,
+      "species": 325,
+      "stars": 3,
+      "alive": true
+    },
+    "1EdTech/digital-credentials-public-validator": {
+      "exp": 1200,
+      "caught": true,
+      "species": 837,
+      "stars": 17,
+      "alive": true
+    },
+    "eGovFramework/egovframe-ai-rag": {
+      "exp": 400,
+      "caught": true,
+      "species": 519,
+      "stars": 17,
+      "alive": true
+    },
+    "eGovFramework/egovframe-common-components": {
+      "exp": 400,
+      "caught": true,
+      "species": 163,
+      "stars": 76,
+      "alive": true
+    },
+    "eGovFramework/egovframe-msa-common-components": {
+      "exp": 400,
+      "caught": true,
+      "species": 333,
+      "stars": 10,
+      "alive": true
+    },
+    "eGovFramework/egovframe-msa-edu": {
+      "exp": 0,
+      "caught": false,
+      "species": 316,
+      "stars": 164,
+      "alive": true
+    },
+    "eGovFramework/egovframe-runtime": {
+      "exp": 4800,
+      "caught": true,
+      "species": 659,
+      "stars": 49,
+      "alive": true
+    },
+    "eGovFramework/egovframe-template-simple-backend": {
+      "exp": 0,
+      "caught": false,
+      "species": 322,
+      "stars": 98,
+      "alive": true
+    },
+    "eGovFramework/egovframe-vscode-initializr": {
+      "exp": 0,
+      "caught": false,
+      "species": 299,
+      "stars": 9,
+      "alive": true
+    },
+    "wantaekchoi/homebrew-tap": {
+      "exp": 400,
+      "caught": true,
+      "species": 328,
+      "stars": 0,
+      "alive": true
+    },
+    "wantaekchoi/kbotop": {
+      "exp": 22800,
+      "caught": true,
+      "species": 270,
+      "stars": 4,
+      "alive": true
+    },
+    "PokeAPI/pokekotlin": {
+      "exp": 400,
+      "caught": true,
+      "species": 420,
+      "stars": 200,
+      "alive": true
+    },
+    "pagefaultgames/pokerogue": {
+      "exp": 1200,
+      "caught": true,
+      "species": 744,
+      "stars": 5814,
+      "alive": true
+    },
+    "wantaekchoi/spawn-point": {
+      "exp": 0,
+      "caught": true,
+      "species": 290,
+      "stars": 2,
+      "alive": true
+    },
+    "spring-projects/spring-ai": {
+      "exp": 0,
+      "caught": false,
+      "species": 595,
+      "stars": 9325,
+      "alive": true
+    },
+    "spring-projects/spring-boot": {
+      "exp": 2000,
+      "caught": true,
+      "species": 458,
+      "stars": 81329,
+      "alive": true
+    },
+    "wantaekchoi/vc-verifier": {
+      "exp": 1600,
+      "caught": true,
+      "species": 406,
+      "stars": 0,
+      "alive": true
+    },
+    "wantaekchoi/wantaekchoi": {
+      "exp": 3600,
+      "caught": true,
+      "species": 438,
+      "stars": 3,
+      "alive": true
+    },
+    "wantaekchoi/wantaekchoi.github.io": {
+      "exp": 5200,
+      "caught": true,
+      "species": 165,
+      "stars": 1,
+      "alive": true
+    },
+    "wantaekchoi/watch": {
+      "exp": 5200,
+      "caught": true,
+      "species": 506,
+      "stars": 2,
+      "alive": true
+    },
+    "openstreetmap/iD": {
+      "exp": 400,
+      "caught": true,
+      "species": 919,
+      "stars": 3858,
+      "alive": true
+    },
+    "wantaekchoi/claude-skills": {
+      "exp": 8800,
+      "caught": true,
+      "species": 129,
+      "stars": 1,
+      "alive": true
+    },
+    "PokeAPI/pokedex-promise-v2": {
+      "exp": 1200,
+      "caught": true,
+      "species": 669,
+      "stars": 560,
+      "alive": true
+    },
+    "PokeAPI/pokeapi-js-wrapper": {
+      "exp": 400,
+      "caught": true,
+      "species": 667,
+      "stars": 317,
+      "alive": true
+    },
+    "nodejs/node": {
+      "exp": 400,
+      "caught": true,
+      "species": 238,
+      "stars": 119026,
+      "alive": true
+    },
+    "blockchain-certificates/explorer-lookup": {
+      "exp": 400,
+      "caught": true,
+      "species": 960,
+      "stars": 3,
+      "alive": true
+    },
+    "OmniOneID/did-client-sdk-aos": {
+      "exp": 400,
+      "caught": true,
+      "species": 427,
+      "stars": 183,
+      "alive": true
+    },
+    "Lee-WonJun/JDD-Description": {
+      "exp": 400,
+      "caught": true,
+      "species": 742,
+      "stars": 2137,
+      "alive": true
+    },
+    "kimchicabbage/geo-api-ptoro": {
+      "exp": 1600,
+      "caught": true,
+      "species": 349,
+      "stars": 1,
+      "alive": true
+    },
+    "suhanlee/crypto-wallet-app": {
+      "exp": 0,
+      "caught": true,
+      "species": 167,
+      "stars": 0,
+      "alive": true
+    },
+    "pedrorito/ChatGPTSlackBot": {
+      "exp": 400,
+      "caught": true,
+      "species": 191,
+      "stars": 382,
+      "alive": true
+    }
+  },
+  "dex": {
+    "129": {
+      "seen": true,
+      "caught": true
+    },
+    "163": {
+      "seen": true,
+      "caught": true
+    },
+    "165": {
+      "seen": true,
+      "caught": true
+    },
+    "166": {
+      "seen": true,
+      "caught": true
+    },
+    "167": {
+      "seen": true,
+      "caught": true
+    },
+    "191": {
+      "seen": true,
+      "caught": true
+    },
+    "238": {
+      "seen": true,
+      "caught": true
+    },
+    "270": {
+      "seen": true,
+      "caught": true
+    },
+    "271": {
+      "seen": true,
+      "caught": true
+    },
+    "272": {
+      "seen": true,
+      "caught": true
+    },
+    "290": {
+      "seen": true,
+      "caught": true
+    },
+    "299": {
+      "seen": true,
+      "caught": false
+    },
+    "316": {
+      "seen": true,
+      "caught": false
+    },
+    "322": {
+      "seen": true,
+      "caught": false
+    },
+    "325": {
+      "seen": true,
+      "caught": true
+    },
+    "328": {
+      "seen": true,
+      "caught": true
+    },
+    "333": {
+      "seen": true,
+      "caught": true
+    },
+    "349": {
+      "seen": true,
+      "caught": true
+    },
+    "406": {
+      "seen": true,
+      "caught": true
+    },
+    "420": {
+      "seen": true,
+      "caught": true
+    },
+    "427": {
+      "seen": true,
+      "caught": true
+    },
+    "438": {
+      "seen": true,
+      "caught": true
+    },
+    "453": {
+      "seen": true,
+      "caught": false
+    },
+    "458": {
+      "seen": true,
+      "caught": true
+    },
+    "506": {
+      "seen": true,
+      "caught": true
+    },
+    "507": {
+      "seen": true,
+      "caught": true
+    },
+    "519": {
+      "seen": true,
+      "caught": true
+    },
+    "595": {
+      "seen": true,
+      "caught": false
+    },
+    "659": {
+      "seen": true,
+      "caught": true
+    },
+    "667": {
+      "seen": true,
+      "caught": true
+    },
+    "669": {
+      "seen": true,
+      "caught": true
+    },
+    "736": {
+      "seen": true,
+      "caught": true
+    },
+    "742": {
+      "seen": true,
+      "caught": true
+    },
+    "744": {
+      "seen": true,
+      "caught": true
+    },
+    "837": {
+      "seen": true,
+      "caught": true
+    },
+    "919": {
+      "seen": true,
+      "caught": true
+    },
+    "960": {
+      "seen": true,
+      "caught": true
+    }
+  },
+  "trainer": {
+    "grassExp": 13250
+  },
+  "updatedAt": "2026-08-20"
+}

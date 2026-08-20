@@ -1,0 +1,73 @@
+name: PokeGrind
+description: 저장소마다 포켓몬 한 마리. 커밋이 쌓이면 진화하고, 머지되면 도감에 등재된다.
+author: wantaekchoi
+branding: { icon: award, color: red }
+
+inputs:
+  login:
+    description: 대상 GitHub 사용자. 비우면 워크플로를 돌리는 계정.
+    required: false
+  token:
+    description: GitHub 토큰. 기본값으로 충분하다.
+    required: false
+    default: ${{ github.token }}
+  readme:
+    description: 카드를 끼워 넣을 파일. <!-- POKEGRIND:START --> 와 <!-- POKEGRIND:END --> 사이가 교체된다.
+    required: false
+    default: README.md
+  state:
+    description: 상태 파일 경로. 도감과 레벨이 여기 쌓인다.
+    required: false
+    default: trainer.json
+  party:
+    description: 카드에 보여줄 마릿수.
+    required: false
+    default: "6"
+  sprite:
+    description: 스프라이트 종류 — animated · artwork · home · front.
+    required: false
+    default: animated
+  tiers:
+    description: 상류 저장소 별 수에 따른 희귀도. "별수:이름" 을 쉼표로 잇는다. 단계 수는 자유.
+    required: false
+    default: "10000:희귀,1000:준희귀,100:보통,0:흔함"
+  exp-commit:
+    description: 커밋 한 건이 주는 경험치.
+    required: false
+    default: "400"
+  commit:
+    description: 바뀐 내용을 자동으로 커밋할지.
+    required: false
+    default: "true"
+  commit-message:
+    description: 자동 커밋 메시지.
+    required: false
+    default: "chore: pokegrind 갱신"
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@v4
+      with: { node-version: "20" }
+    - shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.token }}
+        POKEGRIND_LOGIN: ${{ inputs.login || github.repository_owner }}
+        POKEGRIND_README: ${{ inputs.readme }}
+        POKEGRIND_STATE: ${{ inputs.state }}
+        POKEGRIND_PARTY: ${{ inputs.party }}
+        POKEGRIND_SPRITE: ${{ inputs.sprite }}
+        POKEGRIND_TIERS: ${{ inputs.tiers }}
+        POKEGRIND_EXP_COMMIT: ${{ inputs['exp-commit'] }}
+      run: node "$GITHUB_ACTION_PATH/scripts/update.mjs"
+    - if: inputs.commit == 'true'
+      shell: bash
+      env:
+        MSG: ${{ inputs['commit-message'] }}
+      run: |
+        git config user.name  "github-actions[bot]"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git add -A
+        git diff --staged --quiet && { echo "바뀐 것 없음"; exit 0; }
+        git commit -m "$MSG"
+        git push
