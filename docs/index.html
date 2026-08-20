@@ -193,7 +193,7 @@ document.querySelectorAll('.copy').forEach((b) => {
   const nameOf = new Map(dex.map(([id, name, sprite]) => [id, [name, sprite]]));
   const rows = Object.entries(state?.repos ?? {}).sort((a, b) => b[1].exp - a[1].exp);
   $('#repos tbody').innerHTML = rows.map(([full, r]) => {
-    const [name, sprite] = nameOf.get(r.species) ?? ['?', ''];
+    const [name, sprite] = nameOf.get(r.mon ?? r.species) ?? ['?', ''];
     return `<tr><td><img src="${sprite}" alt=""></td><td>${cap(name)}</td>` +
       `<td><a href="https://github.com/${full}">${full}</a></td>` +
       `<td class="n">${r.level ?? ''}</td><td class="n">${r.commits ?? 0}</td><td class="n">${r.merges ?? 0}</td>` +
