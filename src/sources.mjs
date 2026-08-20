@@ -1,5 +1,5 @@
-// 기여를 긁어오는 곳. GitHub REST 만 쓴다(외부 CLI·패키지 없음).
-// 새 종류(리뷰·이슈 등)가 생기면 여기에 함수를 하나 더한다.
+// Where contributions are read. GitHub REST only — no CLI, no packages.
+// A new kind of contribution means one more function here.
 
 const API = 'https://api.github.com';
 const token = () => process.env.GITHUB_TOKEN || process.env.GH_TOKEN || '';
@@ -14,20 +14,20 @@ async function api(path) {
 }
 
 const repoCache = new Map();
-/** 저장소 상세. 별 수와 포크 원본이 여기 들어 있다. */
+/** Repository detail. Stars and the fork parent both come from here. */
 export async function repoInfo(full) {
   if (!repoCache.has(full)) repoCache.set(full, await api(`/repos/${full}`));
   return repoCache.get(full);
 }
 
-/** 내 공개 저장소. 포크는 상류를 가리킨다. */
+/** Your public repositories. Forks resolve to their upstream. */
 export async function myRepos(login) {
   const out = [];
   for (let page = 1; page <= 10; page++) {
     const batch = await api(`/users/${login}/repos?per_page=100&page=${page}&type=owner`);
     if (!batch?.length) break;
     for (const r of batch) {
-      if (r.private || r.archived === undefined) continue;
+      if (r.private) continue;
       let upstream = r.full_name;
       if (r.fork) {
         const detail = await repoInfo(r.full_name);
@@ -42,7 +42,7 @@ export async function myRepos(login) {
   return out;
 }
 
-/** 저장소별 머지된 PR 수. 포크를 지웠어도 여기 남는다. */
+/** Merged pull requests per repository. These survive deleting the fork. */
 export async function mergedRepos(login) {
   const out = new Map();
   const q = encodeURIComponent(`author:${login} type:pr is:merged`);
@@ -59,7 +59,7 @@ export async function mergedRepos(login) {
 
 export const repoStars = async (full) => (await repoInfo(full))?.stargazers_count ?? 0;
 
-/** 그 저장소에 실제로 남은 내 커밋 수. 포크는 상류를 보므로 '받아들여진 것'만 센다. */
+/** Your commits that actually landed there. For forks this reads upstream, so only accepted work counts. */
 export async function myCommits(full, login, maxPages = 5) {
   let n = 0;
   for (let page = 1; page <= maxPages; page++) {
@@ -71,7 +71,7 @@ export async function myCommits(full, login, maxPages = 5) {
   return n;
 }
 
-/** 잔디: 인증 없이 최근 1년치 날짜별 강도(data-level)를 준다. */
+/** Contribution calendar. Public, unauthenticated, one year of daily levels. */
 export async function grassDays(login) {
   const html = await (await fetch(`https://github.com/users/${login}/contributions`)).text();
   const days = {};

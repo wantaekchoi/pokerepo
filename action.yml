@@ -1,48 +1,56 @@
 name: PokeRepo
-description: 저장소마다 포켓몬 한 마리. 커밋이 쌓이면 진화하고, 머지되면 도감에 등재된다.
+description: One Pokémon per repository. Commits level it up, merged pull requests add it to your Dex.
 author: wantaekchoi
 branding: { icon: award, color: red }
 
 inputs:
   login:
-    description: 대상 GitHub 사용자. 비우면 워크플로를 돌리는 계정.
+    description: GitHub user to read. Defaults to whoever runs the workflow.
     required: false
   token:
-    description: GitHub 토큰. 기본값으로 충분하다.
+    description: GitHub token. The default is enough.
     required: false
     default: ${{ github.token }}
   readme:
-    description: 카드를 끼워 넣을 파일. <!-- POKEREPO:START --> 와 <!-- POKEREPO:END --> 사이가 교체된다.
+    description: File to write the card into. Everything between the POKEREPO:START and POKEREPO:END comments is replaced.
     required: false
     default: README.md
   state:
-    description: 상태 파일 경로. 도감과 레벨이 여기 쌓인다.
+    description: State file. Your Dex and levels accumulate here.
     required: false
     default: trainer.json
   party:
-    description: 카드에 보여줄 마릿수.
+    description: How many Pokémon the card shows.
     required: false
     default: "6"
   sprite:
-    description: 스프라이트 종류 — animated · artwork · home · front.
+    description: Sprite set — animated, artwork, home or front.
     required: false
     default: animated
   tiers:
-    description: 상류 저장소 별 수에 따른 희귀도. "별수:이름" 을 쉼표로 잇는다. 단계 수는 자유.
+    description: Rarity by upstream stars, as "stars:label" separated by commas. Any number of tiers works.
     required: false
-    default: "10000:희귀,1000:준희귀,100:보통,0:흔함"
+    default: "10000:Rare,1000:Uncommon,100:Common,0:Everyday"
   exp-commit:
-    description: 커밋 한 건이 주는 경험치.
+    description: Experience for one commit.
+    required: false
+    default: "400"
+  exp-merge:
+    description: Experience for one pull request merged into someone else's repository.
+    required: false
+    default: "1500"
+  exp-merge-own:
+    description: Experience for one pull request merged into your own repository.
     required: false
     default: "400"
   commit:
-    description: 바뀐 내용을 자동으로 커밋할지.
+    description: Whether to commit the changes automatically.
     required: false
     default: "true"
   commit-message:
-    description: 자동 커밋 메시지.
+    description: Message for the automatic commit.
     required: false
-    default: "chore: pokerepo 갱신"
+    default: "chore: update pokerepo"
 
 runs:
   using: composite
@@ -59,6 +67,8 @@ runs:
         POKEREPO_SPRITE: ${{ inputs.sprite }}
         POKEREPO_TIERS: ${{ inputs.tiers }}
         POKEREPO_EXP_COMMIT: ${{ inputs['exp-commit'] }}
+        POKEREPO_EXP_MERGE: ${{ inputs['exp-merge'] }}
+        POKEREPO_EXP_MERGE_OWN: ${{ inputs['exp-merge-own'] }}
       run: node "$GITHUB_ACTION_PATH/scripts/update.mjs"
     - if: inputs.commit == 'true'
       shell: bash
@@ -68,6 +78,6 @@ runs:
         git config user.name  "github-actions[bot]"
         git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git add -A
-        git diff --staged --quiet && { echo "바뀐 것 없음"; exit 0; }
+        git diff --staged --quiet && { echo "nothing changed"; exit 0; }
         git commit -m "$MSG"
         git push

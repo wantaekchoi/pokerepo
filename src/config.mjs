@@ -1,35 +1,37 @@
-// 기본값은 여기 있지만, 쓰는 사람은 파일을 고치지 않는다.
-// 워크플로에서 환경변수(=Action 입력)로 덮어쓴다.
+// Defaults live here, but nobody using this action edits files.
+// The workflow overrides everything through environment variables (= action inputs).
 
 const num = (k, d) => Number(process.env[k] ?? d);
 const list = (k, d) => (process.env[k] ?? d).split(',').map((x) => x.trim());
 
-/** 기여 한 건이 주는 경험치. */
+/** Experience granted per contribution. */
 export const EXP = {
   commit: num('POKEREPO_EXP_COMMIT', 400),
-  mergeExternal: num('POKEREPO_EXP_MERGE', 1500), // 남의 저장소에 받아들여진 PR
-  mergeOwn: num('POKEREPO_EXP_MERGE_OWN', 400),   // 내 저장소에 스스로 머지한 PR
+  mergeExternal: num('POKEREPO_EXP_MERGE', 1500), // a PR accepted into someone else's repository
+  mergeOwn: num('POKEREPO_EXP_MERGE_OWN', 400), // a PR you merged into your own
   grassLevel: list('POKEREPO_EXP_GRASS', '0,100,250,450,700').map(Number),
 };
 
-/** 상류 저장소 규모 → 희귀도. "별수:이름" 을 쉼표로 잇는다. 몇 단계든 된다. */
-export const TIERS = list('POKEREPO_TIERS', '10000:희귀,1000:준희귀,100:보통,0:흔함')
+/** Upstream stars decide rarity. Written as "stars:label"; any number of tiers works. */
+export const TIERS = list('POKEREPO_TIERS', '10000:Rare,1000:Uncommon,100:Common,0:Everyday')
   .map((t) => {
     const [minStars, label] = t.split(':');
     return { minStars: Number(minStars), label };
   })
   .sort((a, b) => b.minStars - a.minStars);
 
-/** 레벨 조건이 없는 진화(돌·통신교환 등)에 줄 기본 레벨. */
+/** Evolutions with no level requirement (stones, trades) get these instead. */
 export const FALLBACK_LEVEL = { trade: 20, 'use-item': 25, other: 30 };
 
 /**
- * 스프라이트 주소. PokeAPI 가 준 것 중에서 고르고, 없으면 다음 것으로 넘어간다.
- * (애니메이션은 5세대까지만 있어서 그 뒤 세대는 자동으로 공식 일러스트가 된다.)
+ * Sprite address. Picked from what PokéAPI reported, falling through to the next set
+ * when one is missing. Animated sprites stop after generation V, so later species
+ * fall back to official artwork on their own.
  */
 export function spriteUrl(species) {
   const want = process.env.POKEREPO_SPRITE || 'animated';
-  const order = [want, 'animated', 'artwork', 'home', 'front'];
-  for (const k of order) if (species.sprites?.[k]) return species.sprites[k];
+  for (const k of [want, 'animated', 'artwork', 'home', 'front']) {
+    if (species.sprites?.[k]) return species.sprites[k];
+  }
   return null;
 }

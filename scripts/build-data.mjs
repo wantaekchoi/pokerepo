@@ -1,5 +1,6 @@
-// PokeAPI GraphQL에서 전 세대 종·진화·경험치표를 받아 data/species.json 으로 굳힌다.
-// 세대 수를 박지 않는다. 새 세대가 나오면 다시 돌리기만 하면 된다.
+// Pulls species, evolutions, experience tables and sprite addresses from PokéAPI
+// and freezes them into data/species.json. No generation cutoff is written down,
+// so a new generation only needs this script to run again.
 import { writeFile } from 'node:fs/promises';
 
 const EP = 'https://beta.pokeapi.co/graphql/v1beta';
@@ -28,7 +29,7 @@ const data = await ask(`{
   }
 }`);
 
-// 스프라이트 주소는 PokeAPI 가 직접 준다. 저장소 목록을 훑지도, 주소를 조립하지도 않는다.
+// PokéAPI reports sprite addresses itself. Nothing is scraped and no URL is assembled here.
 const dig = (o, ...path) => path.reduce((a, k) => (a && typeof a === 'object' ? a[k] : undefined), o);
 const sprites = {};
 for (const f of data.forms) {
@@ -67,9 +68,10 @@ const species = data.species.map((s) => ({
 
 await writeFile(new URL('../data/species.json', import.meta.url),
   JSON.stringify({ source: 'PokeAPI GraphQL (BSD-3-Clause data)', builtFrom: species.length, curves, species }));
-// 도감 화면이 쓸 가벼운 목록. 격자에 필요한 것만 담는다.
+
+// A trimmed list for the Dex page: only what the grid draws.
 await writeFile(new URL('../docs/dex.json', import.meta.url), JSON.stringify(
   species.map((s) => [s.id, s.name, s.sprites.animated ?? s.sprites.artwork ?? s.sprites.front ?? null])
 ));
 
-console.log(`종 ${species.length} (최대 id ${Math.max(...species.map((s) => s.id))}) · 진화조건 ${Object.keys(evo).length} · 애니메이션 ${species.filter((s) => s.sprites.animated).length} · 일러스트 ${species.filter((s) => s.sprites.artwork).length}`);
+console.log(`species ${species.length} (max id ${Math.max(...species.map((s) => s.id))}) · evolutions ${Object.keys(evo).length} · animated ${species.filter((s) => s.sprites.animated).length} · artwork ${species.filter((s) => s.sprites.artwork).length}`);

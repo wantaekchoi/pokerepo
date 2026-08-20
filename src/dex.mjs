@@ -1,4 +1,5 @@
-// 저장소를 종에 배정하고, 경험치만큼 진화시킨다. 규칙 상수는 config.mjs 에 있다.
+// Assigns a species to each repository and evolves it with the experience it earned.
+// The tunable numbers live in config.mjs.
 import { createHash } from 'node:crypto';
 import { TIERS, FALLBACK_LEVEL } from './config.mjs';
 
@@ -9,16 +10,16 @@ export function makeDex(db) {
   const threshold = (s) =>
     db.curves[s.growthRateId][Math.min(s.evo.minLevel ?? FALLBACK_LEVEL[s.evo.trigger] ?? 30, 100)] ?? Infinity;
 
-  // 진화하는 기본형만 쓴다. 포획률 순으로 줄 세워 티어 수만큼 고르게 나눈다.
+  // Only base forms that evolve are used. Sorting by catch rate splits them evenly across tiers.
   const bases = db.species
     .filter((s) => !s.from && !s.legendary && !s.mythical && childrenOf(s.id).length)
-    .sort((a, b) => b.captureRate - a.captureRate); // 흔한 것 → 희귀한 것
+    .sort((a, b) => b.captureRate - a.captureRate); // common first, rare last
   const size = Math.ceil(bases.length / TIERS.length);
   const poolOf = (i) =>
     bases.slice(Math.max(0, bases.length - (i + 1) * size), Math.max(0, bases.length - i * size));
 
   const used = new Set();
-  /** 저장소 이름 → 기본형. 같은 저장소는 언제나 같은 종이 된다. */
+  /** Repository name to base form. The same repository always maps to the same species. */
   const assign = (full, stars) => {
     const i = TIERS.findIndex((t) => stars >= t.minStars);
     const pool = poolOf(i);
@@ -30,7 +31,10 @@ export function makeDex(db) {
     return { sp: pool[start], tier: TIERS[i].label };
   };
 
-  /** 경험치만큼 계보를 따라 진화시키고, 거쳐온 단계를 모두 돌려준다. */
+  /** Holds a species so no other repository draws it. */
+  const reserve = (id) => used.add(id);
+
+  /** Walks the evolution line as far as the experience allows, returning every stage passed. */
   const grow = (base, exp) => {
     const line = [base];
     for (let cur = base, g = 0; g < 5; g++) {
@@ -45,10 +49,7 @@ export function makeDex(db) {
     return line;
   };
 
-  /** 이미 어떤 저장소가 쓰고 있는 종은 다시 뽑히지 않게 잡아둔다. */
-  const reserve = (id) => used.add(id);
-
-  /** 곡선 위에서 누적 경험치에 해당하는 레벨. */
+  /** Level for a given amount of experience on that species' curve. */
   const levelOf = (sp, exp) => {
     const curve = db.curves[sp.growthRateId] ?? {};
     let lv = 1;

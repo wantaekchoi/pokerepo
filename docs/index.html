@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PokeRepo 도감</title>
+<title>PokeRepo Dex</title>
 <style>
   :root{
     --shell:#c6353a; --shell-dk:#8e2226; --shell-lt:#e05055;
@@ -20,7 +20,7 @@
     background-attachment:fixed;min-height:100vh}
   .wrap{max-width:1080px;margin:0 auto;padding:20px 16px 64px}
 
-  /* 기기 상단 — 렌즈와 표시등 */
+  /* device top: lens and indicator lights */
   .top{display:flex;align-items:center;gap:14px;padding:6px 4px 18px}
   .lens{width:52px;height:52px;border-radius:50%;flex:none;
     background:radial-gradient(circle at 34% 30%,var(--lens-hi) 0 14%,var(--lens) 38%,#1e4a86 100%);
@@ -32,7 +32,7 @@
     color:#fff;text-shadow:0 1px 0 var(--shell-dk)}
   .who{margin:2px 0 0;font-family:var(--mono);font-size:12px;color:#ffdfe0}
 
-  /* 화면 */
+  /* screen */
   .screen{background:var(--screen);border-radius:14px;padding:14px;
     box-shadow:inset 0 0 0 2px var(--line),inset 0 6px 18px rgba(0,0,0,.55),0 10px 24px rgba(0,0,0,.28)}
   .bar{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;
@@ -93,34 +93,34 @@
     <div class="lens" aria-hidden="true"></div>
     <div class="leds" aria-hidden="true"><i class="led g"></i><i class="led y"></i><i class="led r"></i></div>
     <div>
-      <h1>PokeRepo 도감</h1>
-      <p class="who" id="who">불러오는 중…</p>
+      <h1>PokeRepo Dex</h1>
+      <p class="who" id="who">loading…</p>
     </div>
   </div>
 
   <div class="screen">
     <div class="bar">
-      <span>잡음 <b id="nc">0</b></span>
-      <span>봄 <b id="ns">0</b></span>
-      <span>전체 <b id="nt">0</b></span>
+      <span>caught <b id="nc">0</b></span>
+      <span>seen <b id="ns">0</b></span>
+      <span>total <b id="nt">0</b></span>
       <span class="sep"></span>
-      <label class="toggle"><input type="checkbox" id="only"> 있는 것만</label>
+      <label class="toggle"><input type="checkbox" id="only"> owned only</label>
     </div>
     <div class="grid" id="grid"></div>
   </div>
 
-  <h2>저장소</h2>
+  <h2>Repositories</h2>
   <div class="card scroll"><table id="repos">
-    <thead><tr><th></th><th>포켓몬</th><th>저장소</th><th class="n">Lv</th><th class="n">커밋</th><th class="n">머지</th><th></th></tr></thead>
+    <thead><tr><th></th><th>Species</th><th>Repository</th><th class="n">Lv</th><th class="n">Commits</th><th class="n">Merges</th><th></th></tr></thead>
     <tbody></tbody>
   </table></div>
 
-  <h2>내 프로필에 넣기</h2>
-  <p class="note">프로필 저장소(<b>아이디와 같은 이름</b>)의 README에서 카드를 넣고 싶은 자리에 아래 두 줄을 붙인다. 화면에는 보이지 않는다.</p>
-  <div class="snip"><button class="copy">복사</button><pre id="s1">&lt;!-- POKEREPO:START --&gt;
+  <h2>Add to your profile</h2>
+  <p class="note">In the README of a public repository named exactly your username, mark where the card goes.</p>
+  <div class="snip"><button class="copy">copy</button><pre id="s1">&lt;!-- POKEREPO:START --&gt;
 &lt;!-- POKEREPO:END --&gt;</pre></div>
-  <p class="note">같은 저장소에 <b>.github/workflows/pokerepo.yml</b> 파일을 만들고 아래를 붙인다. 그다음 Actions 탭에서 한 번 실행하면, 이후로는 매일 알아서 돈다.</p>
-  <div class="snip"><button class="copy">복사</button><pre id="s2">name: pokerepo
+  <p class="note">Then add <b>.github/workflows/pokerepo.yml</b> and run it once from the Actions tab.</p>
+  <div class="snip"><button class="copy">copy</button><pre id="s2">name: pokerepo
 on:
   schedule: [{ cron: "0 21 * * *" }]
   workflow_dispatch:
@@ -133,9 +133,10 @@ jobs:
       - uses: wantaekchoi/pokerepo@v1</pre></div>
 
   <footer>
-    비공식 비영리 팬 프로젝트. Nintendo · Game Freak · Creatures Inc. · The Pokémon Company와 관련이 없고 승인받지 않았다.
-    포켓몬 관련 이름과 이미지의 권리는 각 권리자에게 있다. 이 페이지는 그림을 담지 않고
-    <a href="https://pokeapi.co">PokéAPI</a>가 알려주는 주소를 참조할 뿐이다.
+    Unofficial, non-commercial fan project. Not affiliated with or endorsed by Nintendo, Game Freak,
+    Creatures Inc. or The Pokémon Company. Pokémon names and imagery belong to their respective owners.
+    No artwork is stored here; sprites are referenced at the addresses
+    <a href="https://pokeapi.co">PokéAPI</a> reports.
   </footer>
 </div>
 
@@ -149,7 +150,7 @@ const raw = (repo, file) => `https://raw.githubusercontent.com/${repo}/HEAD/${fi
 document.querySelectorAll('.copy').forEach((b) => {
   b.addEventListener('click', async () => {
     await navigator.clipboard.writeText(b.parentElement.querySelector('pre').innerText);
-    const t = b.textContent; b.textContent = '복사됨'; b.classList.add('ok');
+    const t = b.textContent; b.textContent = 'copied'; b.classList.add('ok');
     setTimeout(() => { b.textContent = t; b.classList.remove('ok'); }, 1400);
   });
 });
@@ -165,9 +166,9 @@ document.querySelectorAll('.copy').forEach((b) => {
   const cap = (n) => n.replace(/(^|-)([a-z])/g, (_, a, b) => a + b.toUpperCase());
   const owned = state?.dex ?? {};
 
-  $('#who').textContent = state ? `${state.login} · ${state.updatedAt}` : `${source} 의 trainer.json 을 찾지 못했다`;
+  $('#who').textContent = state ? `${state.login} · ${state.updatedAt}` : `${source} ` + ' — no trainer.json found';
 
-  // 도감 순서 그대로. 없는 칸은 번호만 남는다.
+  // Dex order, untouched. Empty slots keep only their number.
   const grid = $('#grid');
   const cells = dex.map(([id, name, sprite]) => {
     const own = owned[id];
@@ -175,7 +176,7 @@ document.querySelectorAll('.copy').forEach((b) => {
     el.className = 'cell' + (own ? (own.caught ? ' caught' : ' seen') : '');
     el.innerHTML = own
       ? `<span class="no">${id}</span><img src="${sprite}" alt="${name}" loading="lazy">` +
-        `<span class="tip">${cap(name)} · ${own.caught ? '잡음' : '봄'}</span>`
+        `<span class="tip">${cap(name)} · ${own.caught ? 'caught' : 'seen'}</span>`
       : `${id}`;
     grid.append(el);
     return { el, own: !!own };
@@ -197,8 +198,8 @@ document.querySelectorAll('.copy').forEach((b) => {
     return `<tr><td><img src="${sprite}" alt=""></td><td>${cap(name)}</td>` +
       `<td><a href="https://github.com/${full}">${full}</a></td>` +
       `<td class="n">${r.level ?? ''}</td><td class="n">${r.commits ?? 0}</td><td class="n">${r.merges ?? 0}</td>` +
-      `<td><span class="tag ${r.caught ? 'c' : 's'}">${r.caught ? '잡음' : '봄'}</span>` +
-      `${r.alive === false ? ' <span class="tag s">정지</span>' : ''}</td></tr>`;
+      `<td><span class="tag ${r.caught ? 'c' : 's'}">${r.caught ? 'caught' : 'seen'}</span>` +
+      `${r.alive === false ? ' <span class="tag s">parked</span>' : ''}</td></tr>`;
   }).join('');
 })();
 </script>
