@@ -16,6 +16,8 @@ export function merge(state, observed) {
       caught: prev.caught || o.caught,
       species: prev.species ?? o.speciesId, // 한 번 정해진 종은 안 바뀐다
       stars: o.stars,
+      commits: o.commits ?? prev.commits ?? 0,
+      merges: Math.max(prev.merges ?? 0, o.merges ?? 0),
       alive: true,
     };
   }

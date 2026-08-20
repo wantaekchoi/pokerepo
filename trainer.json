@@ -6,6 +6,8 @@
       "caught": false,
       "species": 453,
       "stars": 1826,
+      "commits": 0,
+      "merges": 0,
       "alive": true
     },
     "wantaekchoi/detect": {
@@ -13,41 +15,53 @@
       "caught": true,
       "species": 736,
       "stars": 0,
+      "commits": 7,
+      "merges": 0,
       "alive": true
     },
     "OmniOneID/did-client-sdk-aos-kotlin": {
-      "exp": 400,
+      "exp": 1900,
       "caught": true,
       "species": 325,
       "stars": 3,
+      "commits": 1,
+      "merges": 1,
       "alive": true
     },
     "1EdTech/digital-credentials-public-validator": {
-      "exp": 1200,
+      "exp": 5700,
       "caught": true,
       "species": 837,
       "stars": 17,
+      "commits": 3,
+      "merges": 3,
       "alive": true
     },
     "eGovFramework/egovframe-ai-rag": {
-      "exp": 400,
+      "exp": 1900,
       "caught": true,
       "species": 519,
       "stars": 17,
+      "commits": 1,
+      "merges": 1,
       "alive": true
     },
     "eGovFramework/egovframe-common-components": {
-      "exp": 400,
+      "exp": 1900,
       "caught": true,
       "species": 163,
       "stars": 76,
+      "commits": 1,
+      "merges": 1,
       "alive": true
     },
     "eGovFramework/egovframe-msa-common-components": {
-      "exp": 400,
+      "exp": 1900,
       "caught": true,
       "species": 333,
       "stars": 10,
+      "commits": 1,
+      "merges": 1,
       "alive": true
     },
     "eGovFramework/egovframe-msa-edu": {
@@ -55,13 +69,17 @@
       "caught": false,
       "species": 316,
       "stars": 164,
+      "commits": 0,
+      "merges": 0,
       "alive": true
     },
     "eGovFramework/egovframe-runtime": {
-      "exp": 4800,
+      "exp": 19800,
       "caught": true,
       "species": 659,
       "stars": 49,
+      "commits": 12,
+      "merges": 10,
       "alive": true
     },
     "eGovFramework/egovframe-template-simple-backend": {
@@ -69,6 +87,8 @@
       "caught": false,
       "species": 322,
       "stars": 98,
+      "commits": 0,
+      "merges": 0,
       "alive": true
     },
     "eGovFramework/egovframe-vscode-initializr": {
@@ -76,6 +96,8 @@
       "caught": false,
       "species": 299,
       "stars": 9,
+      "commits": 0,
+      "merges": 0,
       "alive": true
     },
     "wantaekchoi/homebrew-tap": {
@@ -83,6 +105,8 @@
       "caught": true,
       "species": 328,
       "stars": 0,
+      "commits": 1,
+      "merges": 0,
       "alive": true
     },
     "wantaekchoi/kbotop": {
@@ -90,20 +114,26 @@
       "caught": true,
       "species": 270,
       "stars": 4,
+      "commits": 57,
+      "merges": 0,
       "alive": true
     },
     "PokeAPI/pokekotlin": {
-      "exp": 400,
+      "exp": 1900,
       "caught": true,
       "species": 420,
       "stars": 200,
+      "commits": 1,
+      "merges": 1,
       "alive": true
     },
     "pagefaultgames/pokerogue": {
-      "exp": 1200,
+      "exp": 5700,
       "caught": true,
       "species": 744,
       "stars": 5814,
+      "commits": 3,
+      "merges": 3,
       "alive": true
     },
     "wantaekchoi/spawn-point": {
@@ -111,6 +141,8 @@
       "caught": true,
       "species": 290,
       "stars": 2,
+      "commits": 0,
+      "merges": 0,
       "alive": true
     },
     "spring-projects/spring-ai": {
@@ -118,13 +150,17 @@
       "caught": false,
       "species": 595,
       "stars": 9325,
+      "commits": 0,
+      "merges": 0,
       "alive": true
     },
     "spring-projects/spring-boot": {
-      "exp": 2000,
+      "exp": 9500,
       "caught": true,
       "species": 458,
       "stars": 81329,
+      "commits": 5,
+      "merges": 5,
       "alive": true
     },
     "wantaekchoi/vc-verifier": {
@@ -132,6 +168,8 @@
       "caught": true,
       "species": 406,
       "stars": 0,
+      "commits": 4,
+      "merges": 0,
       "alive": true
     },
     "wantaekchoi/wantaekchoi": {
@@ -139,6 +177,8 @@
       "caught": true,
       "species": 438,
       "stars": 3,
+      "commits": 9,
+      "merges": 0,
       "alive": true
     },
     "wantaekchoi/wantaekchoi.github.io": {
@@ -146,6 +186,8 @@
       "caught": true,
       "species": 165,
       "stars": 1,
+      "commits": 13,
+      "merges": 0,
       "alive": true
     },
     "wantaekchoi/watch": {
@@ -153,83 +195,107 @@
       "caught": true,
       "species": 506,
       "stars": 2,
+      "commits": 13,
+      "merges": 0,
       "alive": true
     },
     "openstreetmap/iD": {
-      "exp": 400,
+      "exp": 1900,
       "caught": true,
       "species": 919,
       "stars": 3858,
+      "commits": 1,
+      "merges": 1,
       "alive": true
     },
     "wantaekchoi/claude-skills": {
-      "exp": 8800,
+      "exp": 9200,
       "caught": true,
       "species": 129,
       "stars": 1,
+      "commits": 22,
+      "merges": 1,
       "alive": true
     },
     "PokeAPI/pokedex-promise-v2": {
-      "exp": 1200,
+      "exp": 4200,
       "caught": true,
       "species": 669,
       "stars": 560,
+      "commits": 3,
+      "merges": 2,
       "alive": true
     },
     "PokeAPI/pokeapi-js-wrapper": {
-      "exp": 400,
+      "exp": 1900,
       "caught": true,
       "species": 667,
       "stars": 317,
+      "commits": 1,
+      "merges": 1,
       "alive": true
     },
     "nodejs/node": {
-      "exp": 400,
+      "exp": 1900,
       "caught": true,
       "species": 238,
       "stars": 119026,
+      "commits": 1,
+      "merges": 1,
       "alive": true
     },
     "blockchain-certificates/explorer-lookup": {
-      "exp": 400,
+      "exp": 1900,
       "caught": true,
       "species": 960,
       "stars": 3,
+      "commits": 1,
+      "merges": 1,
       "alive": true
     },
     "OmniOneID/did-client-sdk-aos": {
-      "exp": 400,
+      "exp": 1900,
       "caught": true,
       "species": 427,
       "stars": 183,
+      "commits": 1,
+      "merges": 1,
       "alive": true
     },
     "Lee-WonJun/JDD-Description": {
-      "exp": 400,
+      "exp": 1900,
       "caught": true,
       "species": 742,
-      "stars": 2137,
+      "stars": 2138,
+      "commits": 1,
+      "merges": 1,
       "alive": true
     },
     "kimchicabbage/geo-api-ptoro": {
-      "exp": 1600,
+      "exp": 7600,
       "caught": true,
       "species": 349,
       "stars": 1,
+      "commits": 4,
+      "merges": 4,
       "alive": true
     },
     "suhanlee/crypto-wallet-app": {
-      "exp": 0,
+      "exp": 1500,
       "caught": true,
       "species": 167,
       "stars": 0,
+      "commits": 0,
+      "merges": 1,
       "alive": true
     },
     "pedrorito/ChatGPTSlackBot": {
-      "exp": 400,
+      "exp": 1900,
       "caught": true,
       "species": 191,
       "stars": 382,
+      "commits": 1,
+      "merges": 1,
       "alive": true
     }
   },
@@ -350,6 +416,10 @@
       "seen": true,
       "caught": true
     },
+    "660": {
+      "seen": true,
+      "caught": true
+    },
     "667": {
       "seen": true,
       "caught": true
@@ -371,6 +441,10 @@
       "caught": true
     },
     "837": {
+      "seen": true,
+      "caught": true
+    },
+    "838": {
       "seen": true,
       "caught": true
     },

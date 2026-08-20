@@ -6,12 +6,14 @@ const list = (k, d) => (process.env[k] ?? d).split(',').map((x) => x.trim());
 
 /** 기여 한 건이 주는 경험치. */
 export const EXP = {
-  commit: num('POKEGRIND_EXP_COMMIT', 400),
-  grassLevel: list('POKEGRIND_EXP_GRASS', '0,100,250,450,700').map(Number),
+  commit: num('POKEREPO_EXP_COMMIT', 400),
+  mergeExternal: num('POKEREPO_EXP_MERGE', 1500), // 남의 저장소에 받아들여진 PR
+  mergeOwn: num('POKEREPO_EXP_MERGE_OWN', 400),   // 내 저장소에 스스로 머지한 PR
+  grassLevel: list('POKEREPO_EXP_GRASS', '0,100,250,450,700').map(Number),
 };
 
 /** 상류 저장소 규모 → 희귀도. "별수:이름" 을 쉼표로 잇는다. 몇 단계든 된다. */
-export const TIERS = list('POKEGRIND_TIERS', '10000:희귀,1000:준희귀,100:보통,0:흔함')
+export const TIERS = list('POKEREPO_TIERS', '10000:희귀,1000:준희귀,100:보통,0:흔함')
   .map((t) => {
     const [minStars, label] = t.split(':');
     return { minStars: Number(minStars), label };
@@ -26,7 +28,7 @@ export const FALLBACK_LEVEL = { trade: 20, 'use-item': 25, other: 30 };
  * (애니메이션은 5세대까지만 있어서 그 뒤 세대는 자동으로 공식 일러스트가 된다.)
  */
 export function spriteUrl(species) {
-  const want = process.env.POKEGRIND_SPRITE || 'animated';
+  const want = process.env.POKEREPO_SPRITE || 'animated';
   const order = [want, 'animated', 'artwork', 'home', 'front'];
   for (const k of order) if (species.sprites?.[k]) return species.sprites[k];
   return null;

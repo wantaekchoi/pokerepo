@@ -1,4 +1,4 @@
-name: PokeGrind
+name: PokeRepo
 description: 저장소마다 포켓몬 한 마리. 커밋이 쌓이면 진화하고, 머지되면 도감에 등재된다.
 author: wantaekchoi
 branding: { icon: award, color: red }
@@ -12,7 +12,7 @@ inputs:
     required: false
     default: ${{ github.token }}
   readme:
-    description: 카드를 끼워 넣을 파일. <!-- POKEGRIND:START --> 와 <!-- POKEGRIND:END --> 사이가 교체된다.
+    description: 카드를 끼워 넣을 파일. <!-- POKEREPO:START --> 와 <!-- POKEREPO:END --> 사이가 교체된다.
     required: false
     default: README.md
   state:
@@ -42,7 +42,7 @@ inputs:
   commit-message:
     description: 자동 커밋 메시지.
     required: false
-    default: "chore: pokegrind 갱신"
+    default: "chore: pokerepo 갱신"
 
 runs:
   using: composite
@@ -52,13 +52,13 @@ runs:
     - shell: bash
       env:
         GITHUB_TOKEN: ${{ inputs.token }}
-        POKEGRIND_LOGIN: ${{ inputs.login || github.repository_owner }}
-        POKEGRIND_README: ${{ inputs.readme }}
-        POKEGRIND_STATE: ${{ inputs.state }}
-        POKEGRIND_PARTY: ${{ inputs.party }}
-        POKEGRIND_SPRITE: ${{ inputs.sprite }}
-        POKEGRIND_TIERS: ${{ inputs.tiers }}
-        POKEGRIND_EXP_COMMIT: ${{ inputs['exp-commit'] }}
+        POKEREPO_LOGIN: ${{ inputs.login || github.repository_owner }}
+        POKEREPO_README: ${{ inputs.readme }}
+        POKEREPO_STATE: ${{ inputs.state }}
+        POKEREPO_PARTY: ${{ inputs.party }}
+        POKEREPO_SPRITE: ${{ inputs.sprite }}
+        POKEREPO_TIERS: ${{ inputs.tiers }}
+        POKEREPO_EXP_COMMIT: ${{ inputs['exp-commit'] }}
       run: node "$GITHUB_ACTION_PATH/scripts/update.mjs"
     - if: inputs.commit == 'true'
       shell: bash

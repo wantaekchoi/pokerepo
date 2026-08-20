@@ -6,11 +6,11 @@ import { EXP, spriteUrl } from '../src/config.mjs';
 import { myRepos, mergedRepos, repoStars, myCommits, grassDays } from '../src/sources.mjs';
 import { emptyState, merge, record } from '../src/state.mjs';
 
-const login = process.env.POKEGRIND_LOGIN || process.env.GITHUB_REPOSITORY_OWNER;
-if (!login) throw new Error('POKEGRIND_LOGIN 이 필요하다.');
-const statePath = process.env.POKEGRIND_STATE || 'trainer.json';
-const readmePath = process.env.POKEGRIND_README || 'README.md';
-const partySize = Number(process.env.POKEGRIND_PARTY || 6);
+const login = process.env.POKEREPO_LOGIN || process.env.GITHUB_REPOSITORY_OWNER;
+if (!login) throw new Error('POKEREPO_LOGIN 이 필요하다.');
+const statePath = process.env.POKEREPO_STATE || 'trainer.json';
+const readmePath = process.env.POKEREPO_README || 'README.md';
+const partySize = Number(process.env.POKEREPO_PARTY || 6);
 
 const db = JSON.parse(await readFile(new URL('../data/species.json', import.meta.url), 'utf8'));
 const dex = makeDex(db);
@@ -29,7 +29,7 @@ for (const r of Object.values(state.repos)) if (r.species) dex.reserve(r.species
 const merged = await mergedRepos(login);
 const seen = new Map();
 for (const r of await myRepos(login)) seen.set(r.upstream, { caught: !r.isFork || merged.has(r.upstream), fork: r.isFork });
-for (const up of merged) if (!seen.has(up)) seen.set(up, { caught: true, fork: true });
+for (const up of merged.keys()) if (!seen.has(up)) seen.set(up, { caught: true, fork: true });
 
 const observed = [];
 for (const [upstream, info] of seen) {
@@ -37,7 +37,10 @@ for (const [upstream, info] of seen) {
   const stars = known?.stars ?? (await repoStars(upstream));
   const speciesId = known?.species ?? dex.assign(upstream, stars).sp.id;
   const commits = await myCommits(upstream, login);
-  observed.push({ upstream, stars, speciesId, caught: info.caught, exp: commits * EXP.commit });
+  const mine = upstream.startsWith(`${login}/`);
+  const merges = merged.get(upstream) ?? 0;
+  const exp = commits * EXP.commit + merges * (mine ? EXP.mergeOwn : EXP.mergeExternal);
+  observed.push({ upstream, stars, speciesId, caught: info.caught, exp, commits, merges });
 }
 merge(state, observed);
 state.trainer.grassExp = Object.values(await grassDays(login)).reduce((a, lv) => a + (EXP.grassLevel[lv] ?? 0), 0);
@@ -70,7 +73,7 @@ const card = [
   `**도감 ${caught}/${cells.length}** 잡음 · 저장소 ${party.length}곳 · 기여 ${Object.keys(state.repos).length}건 · ${state.updatedAt}`,
 ].join('\n');
 
-const START = '<!-- POKEGRIND:START -->', END = '<!-- POKEGRIND:END -->';
+const START = '<!-- POKEREPO:START -->', END = '<!-- POKEREPO:END -->';
 try {
   const md = await readFile(readmePath, 'utf8');
   if (md.includes(START) && md.includes(END)) {

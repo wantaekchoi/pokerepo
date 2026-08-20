@@ -5,7 +5,7 @@ const API = 'https://api.github.com';
 const token = () => process.env.GITHUB_TOKEN || process.env.GH_TOKEN || '';
 
 async function api(path) {
-  const headers = { Accept: 'application/vnd.github+json', 'User-Agent': 'pokegrind' };
+  const headers = { Accept: 'application/vnd.github+json', 'User-Agent': 'pokerepo' };
   if (token()) headers.Authorization = `Bearer ${token()}`;
   const r = await fetch(`${API}${path}`, { headers });
   if (r.status === 404) return null;
@@ -42,13 +42,16 @@ export async function myRepos(login) {
   return out;
 }
 
-/** 머지된 PR이 있는 저장소들. 포크를 지웠어도 여기 남는다. */
+/** 저장소별 머지된 PR 수. 포크를 지웠어도 여기 남는다. */
 export async function mergedRepos(login) {
-  const out = new Set();
+  const out = new Map();
   const q = encodeURIComponent(`author:${login} type:pr is:merged`);
   for (let page = 1; page <= 10; page++) {
     const r = await api(`/search/issues?q=${q}&per_page=100&page=${page}`);
-    for (const it of r?.items ?? []) out.add(it.repository_url.split('/repos/')[1]);
+    for (const it of r?.items ?? []) {
+      const full = it.repository_url.split('/repos/')[1];
+      out.set(full, (out.get(full) ?? 0) + 1);
+    }
     if ((r?.items ?? []).length < 100) break;
   }
   return out;
