@@ -67,4 +67,9 @@ const species = data.species.map((s) => ({
 
 await writeFile(new URL('../data/species.json', import.meta.url),
   JSON.stringify({ source: 'PokeAPI GraphQL (BSD-3-Clause data)', builtFrom: species.length, curves, species }));
+// 도감 화면이 쓸 가벼운 목록. 격자에 필요한 것만 담는다.
+await writeFile(new URL('../docs/dex.json', import.meta.url), JSON.stringify(
+  species.map((s) => [s.id, s.name, s.sprites.animated ?? s.sprites.artwork ?? s.sprites.front ?? null])
+));
+
 console.log(`종 ${species.length} (최대 id ${Math.max(...species.map((s) => s.id))}) · 진화조건 ${Object.keys(evo).length} · 애니메이션 ${species.filter((s) => s.sprites.animated).length} · 일러스트 ${species.filter((s) => s.sprites.artwork).length}`);

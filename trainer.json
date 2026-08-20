@@ -8,7 +8,9 @@
       "stars": 1826,
       "commits": 0,
       "merges": 0,
-      "alive": true
+      "alive": true,
+      "level": 1,
+      "mon": 453
     },
     "wantaekchoi/detect": {
       "exp": 2800,
@@ -17,7 +19,9 @@
       "stars": 0,
       "commits": 7,
       "merges": 0,
-      "alive": true
+      "alive": true,
+      "level": 14,
+      "mon": 736
     },
     "OmniOneID/did-client-sdk-aos-kotlin": {
       "exp": 1900,
@@ -26,7 +30,9 @@
       "stars": 3,
       "commits": 1,
       "merges": 1,
-      "alive": true
+      "alive": true,
+      "level": 13,
+      "mon": 325
     },
     "1EdTech/digital-credentials-public-validator": {
       "exp": 5700,
@@ -35,7 +41,9 @@
       "stars": 17,
       "commits": 3,
       "merges": 3,
-      "alive": true
+      "alive": true,
+      "level": 20,
+      "mon": 838
     },
     "eGovFramework/egovframe-ai-rag": {
       "exp": 1900,
@@ -44,7 +52,9 @@
       "stars": 17,
       "commits": 1,
       "merges": 1,
-      "alive": true
+      "alive": true,
+      "level": 14,
+      "mon": 519
     },
     "eGovFramework/egovframe-common-components": {
       "exp": 1900,
@@ -53,7 +63,9 @@
       "stars": 76,
       "commits": 1,
       "merges": 1,
-      "alive": true
+      "alive": true,
+      "level": 12,
+      "mon": 163
     },
     "eGovFramework/egovframe-msa-common-components": {
       "exp": 1900,
@@ -62,7 +74,9 @@
       "stars": 10,
       "commits": 1,
       "merges": 1,
-      "alive": true
+      "alive": true,
+      "level": 10,
+      "mon": 333
     },
     "eGovFramework/egovframe-msa-edu": {
       "exp": 0,
@@ -71,7 +85,9 @@
       "stars": 164,
       "commits": 0,
       "merges": 0,
-      "alive": true
+      "alive": true,
+      "level": 1,
+      "mon": 316
     },
     "eGovFramework/egovframe-runtime": {
       "exp": 19800,
@@ -80,7 +96,9 @@
       "stars": 49,
       "commits": 12,
       "merges": 10,
-      "alive": true
+      "alive": true,
+      "level": 27,
+      "mon": 660
     },
     "eGovFramework/egovframe-template-simple-backend": {
       "exp": 0,
@@ -89,7 +107,9 @@
       "stars": 98,
       "commits": 0,
       "merges": 0,
-      "alive": true
+      "alive": true,
+      "level": 1,
+      "mon": 322
     },
     "eGovFramework/egovframe-vscode-initializr": {
       "exp": 0,
@@ -98,7 +118,9 @@
       "stars": 9,
       "commits": 0,
       "merges": 0,
-      "alive": true
+      "alive": true,
+      "level": 1,
+      "mon": 299
     },
     "wantaekchoi/homebrew-tap": {
       "exp": 400,
@@ -107,7 +129,9 @@
       "stars": 0,
       "commits": 1,
       "merges": 0,
-      "alive": true
+      "alive": true,
+      "level": 8,
+      "mon": 328
     },
     "wantaekchoi/kbotop": {
       "exp": 22800,
@@ -116,7 +140,9 @@
       "stars": 4,
       "commits": 57,
       "merges": 0,
-      "alive": true
+      "alive": true,
+      "level": 30,
+      "mon": 272
     },
     "PokeAPI/pokekotlin": {
       "exp": 1900,
@@ -125,7 +151,9 @@
       "stars": 200,
       "commits": 1,
       "merges": 1,
-      "alive": true
+      "alive": true,
+      "level": 12,
+      "mon": 420
     },
     "pagefaultgames/pokerogue": {
       "exp": 5700,
@@ -134,7 +162,9 @@
       "stars": 5814,
       "commits": 3,
       "merges": 3,
-      "alive": true
+      "alive": true,
+      "level": 17,
+      "mon": 744
     },
     "wantaekchoi/spawn-point": {
       "exp": 0,
@@ -143,7 +173,9 @@
       "stars": 2,
       "commits": 0,
       "merges": 0,
-      "alive": true
+      "alive": true,
+      "level": 1,
+      "mon": 290
     },
     "spring-projects/spring-ai": {
       "exp": 0,
@@ -152,7 +184,9 @@
       "stars": 9325,
       "commits": 0,
       "merges": 0,
-      "alive": true
+      "alive": true,
+      "level": 1,
+      "mon": 595
     },
     "spring-projects/spring-boot": {
       "exp": 9500,
@@ -161,7 +195,9 @@
       "stars": 81329,
       "commits": 5,
       "merges": 5,
-      "alive": true
+      "alive": true,
+      "level": 19,
+      "mon": 458
     },
     "wantaekchoi/vc-verifier": {
       "exp": 1600,
@@ -170,7 +206,9 @@
       "stars": 0,
       "commits": 4,
       "merges": 0,
-      "alive": true
+      "alive": true,
+      "level": 13,
+      "mon": 406
     },
     "wantaekchoi/wantaekchoi": {
       "exp": 3600,
@@ -179,7 +217,9 @@
       "stars": 3,
       "commits": 9,
       "merges": 0,
-      "alive": true
+      "alive": true,
+      "level": 15,
+      "mon": 438
     },
     "wantaekchoi/wantaekchoi.github.io": {
       "exp": 5200,
@@ -188,7 +228,9 @@
       "stars": 1,
       "commits": 13,
       "merges": 0,
-      "alive": true
+      "alive": true,
+      "level": 18,
+      "mon": 166
     },
     "wantaekchoi/watch": {
       "exp": 5200,
@@ -197,7 +239,9 @@
       "stars": 2,
       "commits": 13,
       "merges": 0,
-      "alive": true
+      "alive": true,
+      "level": 19,
+      "mon": 507
     },
     "openstreetmap/iD": {
       "exp": 1900,
@@ -206,7 +250,9 @@
       "stars": 3858,
       "commits": 1,
       "merges": 1,
-      "alive": true
+      "alive": true,
+      "level": 12,
+      "mon": 919
     },
     "wantaekchoi/claude-skills": {
       "exp": 9200,
@@ -215,7 +261,9 @@
       "stars": 1,
       "commits": 22,
       "merges": 1,
-      "alive": true
+      "alive": true,
+      "level": 19,
+      "mon": 129
     },
     "PokeAPI/pokedex-promise-v2": {
       "exp": 4200,
@@ -224,7 +272,9 @@
       "stars": 560,
       "commits": 3,
       "merges": 2,
-      "alive": true
+      "alive": true,
+      "level": 16,
+      "mon": 669
     },
     "PokeAPI/pokeapi-js-wrapper": {
       "exp": 1900,
@@ -233,7 +283,9 @@
       "stars": 317,
       "commits": 1,
       "merges": 1,
-      "alive": true
+      "alive": true,
+      "level": 14,
+      "mon": 667
     },
     "nodejs/node": {
       "exp": 1900,
@@ -242,7 +294,9 @@
       "stars": 119026,
       "commits": 1,
       "merges": 1,
-      "alive": true
+      "alive": true,
+      "level": 12,
+      "mon": 238
     },
     "blockchain-certificates/explorer-lookup": {
       "exp": 1900,
@@ -251,7 +305,9 @@
       "stars": 3,
       "commits": 1,
       "merges": 1,
-      "alive": true
+      "alive": true,
+      "level": 12,
+      "mon": 960
     },
     "OmniOneID/did-client-sdk-aos": {
       "exp": 1900,
@@ -260,7 +316,9 @@
       "stars": 183,
       "commits": 1,
       "merges": 1,
-      "alive": true
+      "alive": true,
+      "level": 12,
+      "mon": 427
     },
     "Lee-WonJun/JDD-Description": {
       "exp": 1900,
@@ -269,7 +327,9 @@
       "stars": 2138,
       "commits": 1,
       "merges": 1,
-      "alive": true
+      "alive": true,
+      "level": 12,
+      "mon": 742
     },
     "kimchicabbage/geo-api-ptoro": {
       "exp": 7600,
@@ -278,7 +338,9 @@
       "stars": 1,
       "commits": 4,
       "merges": 4,
-      "alive": true
+      "alive": true,
+      "level": 16,
+      "mon": 349
     },
     "suhanlee/crypto-wallet-app": {
       "exp": 1500,
@@ -287,7 +349,9 @@
       "stars": 0,
       "commits": 0,
       "merges": 1,
-      "alive": true
+      "alive": true,
+      "level": 12,
+      "mon": 167
     },
     "pedrorito/ChatGPTSlackBot": {
       "exp": 1900,
@@ -296,7 +360,9 @@
       "stars": 382,
       "commits": 1,
       "merges": 1,
-      "alive": true
+      "alive": true,
+      "level": 14,
+      "mon": 191
     }
   },
   "dex": {

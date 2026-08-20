@@ -2,6 +2,8 @@
 
 저장소마다 포켓몬 한 마리. 커밋이 쌓이면 진화하고, 머지되면 도감에 등재된다.
 
+**[도감 보기](https://wantaekchoi.github.io/pokerepo/)** — 번호순 격자, 있는 것만 보기, 저장소별 상세.
+
 <!-- POKEREPO:START -->
 <table><tr>
 <td align="center" width="110"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/272.gif" width="72" alt="ludicolo"><br><b>Ludicolo</b><br><sub>Lv.30</sub><br><sub><a href="https://github.com/wantaekchoi/kbotop">kbotop</a></sub></td>

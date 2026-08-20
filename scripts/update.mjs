@@ -51,12 +51,17 @@ for (const [upstream, r] of Object.entries(state.repos)) {
   const line = dex.grow(byId.get(r.species), r.exp);
   for (const s of line) record(state, s.id, r.caught);
   const top = line.at(-1);
-  party.push({ ...r, upstream, mon: top, level: dex.levelOf(top, r.exp), stage: line.length });
+  const level = dex.levelOf(top, r.exp);
+  r.level = level;
+  r.mon = top.id;
+  party.push({ ...r, upstream, mon: top, level, stage: line.length });
 }
 party.sort((a, b) => b.level - a.level || b.exp - a.exp);
 
 state.updatedAt = new Date().toISOString().slice(0, 10);
 await writeFile(statePath, JSON.stringify(state, null, 2) + '\n');
+// 도감 페이지가 같은 폴더에서 읽을 수 있게 복사해 둔다(있을 때만).
+try { await writeFile('docs/trainer.json', JSON.stringify(state)); } catch {}
 
 const cells = Object.values(state.dex);
 const caught = cells.filter((c) => c.caught).length;
